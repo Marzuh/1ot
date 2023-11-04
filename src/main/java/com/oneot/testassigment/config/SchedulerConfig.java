@@ -1,4 +1,4 @@
-package com.oneot.testassigment.forecast_job;
+package com.oneot.testassigment.config;
 
 import net.javacrumbs.shedlock.core.LockProvider;
 import net.javacrumbs.shedlock.provider.jdbctemplate.JdbcTemplateLockProvider;

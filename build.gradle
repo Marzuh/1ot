@@ -18,17 +18,24 @@ ext {
     dbScheduler = "12.5.0"
     shedlock = "5.9.1"
     slf4j = "2.0.9"
+    jacksonXml = "2.15.3"
+    springRetry = "2.0.4"
+    springAspects = "6.0.13"
 }
 
 dependencies {
     implementation(
             "org.springframework.boot:spring-boot-starter-data-jdbc",
             "org.springframework.boot:spring-boot-starter-web",
+            "org.springframework.boot:spring-boot-starter-validation",
+            "org.springframework.retry:spring-retry:${springRetry}",
+            "org.springframework:spring-aspects:${springAspects}",
             "org.liquibase:liquibase-core",
             "org.projectlombok:lombok",
             "org.slf4j:slf4j-api:${slf4j}",
             "net.javacrumbs.shedlock:shedlock-spring:${shedlock}",
             "net.javacrumbs.shedlock:shedlock-provider-jdbc-template:${shedlock}",
+            "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${jacksonXml}"
     )
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
