@@ -1,13 +1,16 @@
-package com.oneot.testassigment.forecast;
+package com.oneot.testassigment.domain.forecast;
 
-import com.oneot.testassigment.Auditable;
+import com.oneot.testassigment.domain.Auditable;
+import com.oneot.testassigment.domain.place_forecast.PlaceForecast;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 @Table("weather\".\"forecast")
@@ -27,6 +30,9 @@ public class Forecast extends Auditable {
     private int tempMin;
 
     private int tempMax;
+
+    @MappedCollection(idColumn = "forecast_id")
+    private Set<PlaceForecast> places;
 
     private String text_description;
 

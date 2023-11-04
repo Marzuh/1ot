@@ -1,4 +1,4 @@
-package com.oneot.testassigment;
+package com.oneot.testassigment.domain;
 
 import lombok.Data;
 
