@@ -4,12 +4,14 @@ import com.oneot.testassigment.domain.place.PlaceService;
 import com.oneot.testassigment.domain.place_forecast.PlaceForecast;
 import com.oneot.testassigment.weather_api_client.dto.Forecasts;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static com.oneot.testassigment.mapper.ForecastMapper.*;
+import static com.oneot.testassigment.mapper.ForecastMapper.mapForecast;
 
 @Service
 @AllArgsConstructor
@@ -18,6 +20,8 @@ public class ForecastService {
     private final ForecastRepository forecastRepository;
 
     private final PlaceService placeService;
+
+    private static final Logger logger = LoggerFactory.getLogger(ForecastService.class);
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -32,7 +36,7 @@ public class ForecastService {
                 createAndSaveForecast(f, date, TimeOfDay.NIGHT);
             }
         });
-        System.out.println("pause"); //TODO: logger success
+        logger.debug("New forecasts saved.");
     }
 
     private void createAndSaveForecast(com.oneot.testassigment.weather_api_client.dto.Forecast f, LocalDate date, TimeOfDay timeOfDay) {
