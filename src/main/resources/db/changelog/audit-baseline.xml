@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+                   logicalFilePath="audit-baseline.xml">
+
+    <changeSet id="create-audit-schema" author="aleksei">
+        <sql splitStatements="false">
+            CREATE SCHEMA audit;
+            REVOKE ALL ON SCHEMA audit FROM PUBLIC;
+        </sql>
+    </changeSet>
+
+    <changeSet id="audit-baseline" author="aleksei">
+        <sql splitStatements="false"><![CDATA[
+            SELECT set_config('search_path', 'audit', true);
+            CREATE OR REPLACE FUNCTION audit_biu()
+                RETURNS TRIGGER AS
+            $$
+            BEGIN
+                IF TG_OP = 'INSERT' THEN
+                    NEW.created_at := NOW();
+                    NEW.modified_at := NOW();
+                    NEW.created_by := current_user;
+                    NEW.modified_by := current_user;
+                ELSIF TG_OP = 'UPDATE' THEN
+                    NEW.modified_at := NOW();
+                    NEW.modified_by := current_user;
+                END IF;
+                RETURN NEW;
+            END;
+            $$
+            LANGUAGE plpgsql;
+            ]]></sql>
+    </changeSet>
+</databaseChangeLog>

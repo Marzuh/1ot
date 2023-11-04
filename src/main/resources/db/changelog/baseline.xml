@@ -8,6 +8,7 @@
     <changeSet id="create-weather-schema" author="aleksei">
         <sql splitStatements="false">
             CREATE SCHEMA weather;
+            REVOKE ALL ON SCHEMA weather FROM PUBLIC;
         </sql>
     </changeSet>
 
@@ -24,6 +25,11 @@
                 modified_at TIMESTAMP WITH TIME ZONE NOT NULL,
                 modified_by VARCHAR(63)              NOT NULL
             );
+
+            CREATE TRIGGER audit_biu
+            BEFORE INSERT OR UPDATE ON weather.place
+            FOR EACH ROW
+            EXECUTE FUNCTION audit.audit_biu();
         </sql>
     </changeSet>
 
@@ -48,6 +54,11 @@
             );
 
             CREATE UNIQUE INDEX unique_forecast_date_time ON forecast (date, time_of_day);
+
+            CREATE TRIGGER audit_biu
+            BEFORE INSERT OR UPDATE ON weather.forecast
+            FOR EACH ROW
+            EXECUTE FUNCTION audit.audit_biu();
         </sql>
     </changeSet>
 
@@ -70,6 +81,11 @@
                 ---
                 CONSTRAINT check_temperature_exists CHECK (temp_min IS NOT NULL OR temp_max IS NOT NULL)
             );
+
+            CREATE TRIGGER audit_biu
+            BEFORE INSERT OR UPDATE ON weather.place_forecast
+            FOR EACH ROW
+            EXECUTE FUNCTION audit.audit_biu();
         </sql>
     </changeSet>
 
@@ -87,6 +103,8 @@
             );
         </sql>
     </changeSet>
+
+
 
 
 </databaseChangeLog>
