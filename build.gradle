@@ -14,18 +14,36 @@ java {
 repositories {
     mavenCentral()
 }
+ext {
+    dbScheduler = "12.5.0"
+    shedlock = "5.9.1"
+    slf4j = "2.0.9"
+}
 
 dependencies {
     implementation(
-            'org.springframework.boot:spring-boot-starter-data-jdbc',
-            'org.springframework.boot:spring-boot-starter-web',
-            'org.liquibase:liquibase-core',
-            'org.projectlombok:lombok'
+            "org.springframework.boot:spring-boot-starter-data-jdbc",
+            "org.springframework.boot:spring-boot-starter-web",
+            "org.liquibase:liquibase-core",
+            "org.projectlombok:lombok",
+            "org.slf4j:slf4j-api:${slf4j}",
+            "net.javacrumbs.shedlock:shedlock-spring:${shedlock}",
+            "net.javacrumbs.shedlock:shedlock-provider-jdbc-template:${shedlock}",
     )
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly(
+            "org.projectlombok:lombok"
+    )
+
+    annotationProcessor(
+            "org.projectlombok:lombok"
+    )
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
