@@ -1,0 +1,50 @@
+plugins {
+    id 'base'
+    id 'com.github.node-gradle.node' version '7.0.1'
+}
+
+node {
+    version = '20.9.0' // newest LTS as of 05.11.2023
+    download = true
+}
+
+task yarnBuild(type: YarnTask, dependsOn: yarn) {
+    inputs.dir 'src'
+    inputs.dir 'public'
+
+    inputs.file 'package.json'
+    inputs.file 'vite.config.ts'
+    inputs.file 'yarn.lock'
+
+    outputs.dir project.buildDir
+    outputs.cacheIf { true }
+
+    args = ['build']
+}
+
+task viteRun(type: YarnTask, dependsOn: yarn) {
+    description = 'Runs Vite in dev mode.'
+    args = ['dev']
+}
+
+task packageYarnApp(type: Jar, dependsOn: yarnBuild) {
+    from ('dist') {
+        into 'static/web'
+    }
+}
+
+clean {
+    delete packageYarnApp.archiveFile
+}
+
+assemble.dependsOn packageYarnApp
+
+configurations {
+    yarnResources
+}
+
+configurations.default.extendsFrom(configurations.yarnResources)
+
+artifacts {
+    yarnResources packageYarnApp
+}

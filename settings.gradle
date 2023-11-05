@@ -1,1 +1,2 @@
 rootProject.name = 'test-assigment'
+include 'background-process', 'web'
