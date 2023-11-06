@@ -17,7 +17,7 @@ Database: weather
 Username: weather   
 Password: weather
 
-Port 7001 must be free.
+Port 7001 must be free.  
 
 For local development you can use up docker container from 'docker-compose.yml'
 
