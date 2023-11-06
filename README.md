@@ -30,6 +30,7 @@ java/com/oneot/testassigment/AssigmentApplication.java
 
 ## FE: Web
 
+Port 7000 must be free.
 Better way is to execute 'dev' script form 'package.json'
 
 ```bash
