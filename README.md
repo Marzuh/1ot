@@ -21,7 +21,7 @@ You can run backend application with gradle task bootRun or from main class java
 ### Why RestTemplate was chosen  
 редкие запросы, вполне можно синхронно
 no @transactional due to use case  
-
+ 
 ## FE: Web  
 
 
