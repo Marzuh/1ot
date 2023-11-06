@@ -1,6 +1,6 @@
 # About
 
-Weather forecast application that consist from two independent modules. Web - for frontend and Background for backend.  
+Weather forecast application which consists of two independent modules. Web - for frontend and Background for backend.  
 Used technologies: Springboot3, Java17, node20, vue3, postgres16, luquibase.
 
 # How to run the project
@@ -19,13 +19,13 @@ Password: weather
 
 Port 7001 must be free.
 
-For local development you can use up docker container from 'docker-compose.yml'
+For the local development up a docker container from 'docker-compose.yml'
 
 ```bash
 docker-compose up -d database
 ```
 
-You can run backend application with gradle task background-process.Tasks.application.bootRun or from main class
+Run backend application with gradle task background-process.Tasks.application.bootRun or from main class
 java/com/oneot/testassigment/AssigmentApplication.java
 
 ```bash
@@ -35,14 +35,14 @@ java/com/oneot/testassigment/AssigmentApplication.java
 ## FE: Web
 
 Port 7000 must be free.
-Better way is to execute 'dev' script form 'package.json'
+Better is to execute 'dev' script form 'package.json'
 
 ```bash
 cd ./web
 yarn vite
 ```
 
-Also you can run FE with gradle task web.Tasks.node.viteRun (Warning! You must be able to stop/kill process manually,
+Other way is to run FE with gradle task web.Tasks.node.viteRun (Warning! You must be able to stop/kill process manually,
 because IDE can not do it)
 ```bash
 ./gradlew :web:viteRun
@@ -51,13 +51,13 @@ because IDE can not do it)
 **_Tested_**
 Project was developed and tested (mostly manual for FE) on Ubuntu 22.04 64bit, Chrome, Mozilla Firefox 119.0 (64-bit) 
 
-## Done features
+## Implemented features
 
 ### FE: Web
 
 Created SPA with vite + vue3. Setup vite proxy. Used vue-router for page navigation. Created example pages "About" and "
 Forecasts". Forecasts page contains filter block for choosing search parameters and table for showing results.  
-If you send request with empty parameters BE will return first 20 forecast from DB. 20 is page size, it can be changed
+If browser sends a request with empty parameters BE will return first 20 forecast from DB. 20 is page size, it can be changed
 on frontend. Pagination is set for 3 items per page for demo purpose. For production, it could be changed back to 20
 items per page or added customer feature to choose size of the page.
 
@@ -66,32 +66,32 @@ items per page or added customer feature to choose size of the page.
 Springboot application with connection to DB. Used liquibase for DB migrations. Created auditable table, function and
 trigger. BE executed scheduled task every 30 min, that option can be changed in application.properties. Also used
 shedlock, so BE can run on several pods and scheduled job will execute only once. Created endpoint for receiving all
-location names and another endpoint for filtered pagination search. Was added custom mapper to handle with 1 - * - 1
+location names and another endpoint for filtered pagination search. A custom mapper was added to handle with 1 - * - 1
 table connections.
 
 **_Why RestTemplate was chosen_**
-I have chosen restTemplate because request to weather API can be done in synchronous way. For asynchronous and thread
+RestTemplate was chosen because request to weather API can be done in synchronous way. For asynchronous and thread
 non-blocking requests WebClient will be better choice.
 
 **_Feature development_**  
-Features were developed in own git branches. Because I developed personally, then the main branch is strait.
+Features were developed in their own git branches. As well as I was the only developer, the main branch looks plain.
 
 ## In progress
 
 ### Known issues and not finished tasks
 
 - If launch web application through gradle then process will not stop properly, you must be able to do this manually.
-- Web UI needs improvement with responsive design.
+- Web UI needs to be improved with a responsive design.
 
 ### Implementations that were not finished
 
 - Swagger. Rest controller classes and methods are annotated.
-- Think about data representation. Because for test assigment I show skill of using mapper for complicated request and
-  pagination. One way of improvement is change request so that only forecast objects are searched in DB and @click on
-  any of them send next request for all place forecast linked to given forecast. Other way is change UI. Right now if
+- Need to think more about data representation. The current implementation designed as it is designed because for the test assigment I show my skill of using mapper for a complicated request and
+  pagination. One way of improvement is to change request so that only forecast objects are searched in DB and @click on
+  any of them send next request for all place forecast linked to given forecast. Other way is to change UI. Right now if
   forecast have any place, then places will count as item. If no then forecast itself will be counted as item.
 
 ## Good to implement
 
-- Pinia. Good to add for storing filters values when we are moving in out SPA.
+- Pinia. Good to add for storing filters values when user is moving inside SPA.
 - Multiselect with text input with autocomplete for place search options 
