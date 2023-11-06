@@ -34,7 +34,7 @@ public class Forecast extends Auditable {
     @MappedCollection(idColumn = "forecast_id")
     private Set<PlaceForecast> places;
 
-    private String text_description;
+    private String textDescription;
 
     private String peipsi;
 }

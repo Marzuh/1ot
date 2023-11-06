@@ -22,6 +22,8 @@ ext {
     jacksonXml = "2.15.3"
     springRetry = "2.0.4"
     springAspects = "6.0.13"
+    swagger = "2.2.18"
+    simpleflatMapper = "8.2.3"
 }
 
 dependencies {
@@ -36,7 +38,8 @@ dependencies {
             "org.slf4j:slf4j-api:${slf4j}",
             "net.javacrumbs.shedlock:shedlock-spring:${shedlock}",
             "net.javacrumbs.shedlock:shedlock-provider-jdbc-template:${shedlock}",
-            "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${jacksonXml}"
+            "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${jacksonXml}",
+            "io.swagger.core.v3:swagger-annotations:${swagger}",
     )
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

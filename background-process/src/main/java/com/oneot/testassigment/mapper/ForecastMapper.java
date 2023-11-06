@@ -16,7 +16,7 @@ public class ForecastMapper {
                 .setPhenomenon(forecast.getPhenomenon())
                 .setTempMin(forecast.getTempMin())
                 .setTempMax(forecast.getTempMax())
-                .setText_description(forecast.getText())
+                .setTextDescription(forecast.getText())
                 .setPeipsi(forecast.getPeipsi())
                 .setPlaces(new HashSet<>());
     }
