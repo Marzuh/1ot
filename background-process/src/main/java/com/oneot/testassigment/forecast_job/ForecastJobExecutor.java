@@ -2,7 +2,7 @@ package com.oneot.testassigment.forecast_job;
 
 import com.oneot.testassigment.domain.forecast.ForecastService;
 import com.oneot.testassigment.weather_api_client.WeatherApiClient;
-import com.oneot.testassigment.weather_api_client.dto.Forecasts;
+import com.oneot.testassigment.weather_api_client.dto.XmlForecasts;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.javacrumbs.shedlock.spring.annotation.SchedulerLock;
@@ -25,7 +25,7 @@ public class ForecastJobExecutor {
     @SchedulerLock(name = "fetchApiForecast")
     public void fetchForecasts() {
         log.info("Scheduled job with name = \"fetchApiForecast\" started.");
-        Forecasts forecasts = weatherApiClient.fetchForecasts();
+        XmlForecasts forecasts = weatherApiClient.fetchForecasts();
         forecastService.saveFetchedForecasts(forecasts);
     }
 }

@@ -2,7 +2,7 @@ package com.oneot.testassigment.weather_api_client;
 
 import com.oneot.testassigment.config.TestRestTemplateConfiguration;
 import com.oneot.testassigment.utils.TestUtil;
-import com.oneot.testassigment.weather_api_client.dto.Forecasts;
+import com.oneot.testassigment.weather_api_client.dto.XmlForecasts;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -54,13 +54,11 @@ public class WeatherApiClientTest {
     @DisplayName("Success forecast fetching. Check data structure.")
     void fetchForecastsSucceedTest() throws Exception {
         // Given
-        String xmlData = TestUtil.loadResource("weatherApiResponse.xml");
-        String url = "http://fake.api";
         mockServer.expect(requestTo(URL))
                 .andRespond(withSuccess(XML_DATA, MediaType.APPLICATION_XML));
 
         // When
-        Forecasts response = weatherApiClient.fetchForecasts();
+        XmlForecasts response = weatherApiClient.fetchForecasts();
 
         // Then
         assertThat(response.getForecastList().size()).isEqualTo(4);
@@ -114,7 +112,7 @@ public class WeatherApiClientTest {
         mockServer.expect(requestTo(URL))
                 .andRespond(withSuccess(XML_DATA, MediaType.APPLICATION_XML));
 
-        Forecasts response = weatherApiClient.fetchForecasts();
+        XmlForecasts response = weatherApiClient.fetchForecasts();
 
         // Then
         assertThat(response.getForecastList().size()).isEqualTo(4);

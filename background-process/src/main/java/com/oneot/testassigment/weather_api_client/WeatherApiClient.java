@@ -1,6 +1,6 @@
 package com.oneot.testassigment.weather_api_client;
 
-import com.oneot.testassigment.weather_api_client.dto.Forecasts;
+import com.oneot.testassigment.weather_api_client.dto.XmlForecasts;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -27,9 +27,9 @@ public class WeatherApiClient {
     @Retryable(retryFor = {HttpClientErrorException.class},
             maxAttempts = 5,
             backoff = @Backoff(delay = 1000))
-    public Forecasts fetchForecasts() throws HttpClientErrorException {
+    public XmlForecasts fetchForecasts() throws HttpClientErrorException {
         log.debug("Start fetching new forecasts");
-        ResponseEntity<Forecasts> response = restTemplate.getForEntity(weatherApiProperties.getApiUri(), Forecasts.class);
+        ResponseEntity<XmlForecasts> response = restTemplate.getForEntity(weatherApiProperties.getApiUri(), XmlForecasts.class);
         log.debug("Weather API response = {}", response);
         return response.getBody();
     }

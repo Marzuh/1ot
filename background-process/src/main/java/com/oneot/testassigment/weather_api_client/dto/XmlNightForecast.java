@@ -4,15 +4,19 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
 @Getter
+@Setter
+@Accessors(chain = true)
 @JacksonXmlRootElement(localName = "night")
-public class NightForecast extends BaseForecast {
+public class XmlNightForecast extends XmlBaseForecast {
 
     @JacksonXmlElementWrapper(localName = "night", useWrapping = false)
     @JacksonXmlProperty(localName = "place")
-    private List<Place> places;
+    private List<XmlPlace> places;
 
 }

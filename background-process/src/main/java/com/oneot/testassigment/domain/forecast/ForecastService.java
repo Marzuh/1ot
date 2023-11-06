@@ -2,8 +2,9 @@ package com.oneot.testassigment.domain.forecast;
 
 import com.oneot.testassigment.domain.place.PlaceService;
 import com.oneot.testassigment.domain.place_forecast.PlaceForecast;
-import com.oneot.testassigment.weather_api_client.dto.Forecasts;
-import com.oneot.testassigment.weather_api_client.dto.Place;
+import com.oneot.testassigment.weather_api_client.dto.XmlForecast;
+import com.oneot.testassigment.weather_api_client.dto.XmlForecasts;
+import com.oneot.testassigment.weather_api_client.dto.XmlPlace;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -28,7 +29,7 @@ public class ForecastService {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
 
-    public void saveFetchedForecasts(Forecasts forecasts) {
+    public void saveFetchedForecasts(XmlForecasts forecasts) {
         forecasts.getForecastList().forEach(f -> {
             LocalDate date = LocalDate.parse(f.getDate(), formatter);
             // TODO: update if exist and changed
@@ -42,10 +43,10 @@ public class ForecastService {
         log.debug("New forecasts saved.");
     }
 
-    private void createAndSaveForecast(com.oneot.testassigment.weather_api_client.dto.Forecast f, LocalDate date, TimeOfDay timeOfDay) {
+    private void createAndSaveForecast(XmlForecast f, LocalDate date, TimeOfDay timeOfDay) {
         boolean isDay = timeOfDay.equals(TimeOfDay.DAY);
         Forecast forecast = isDay ? mapForecast(f.getDay(), date, timeOfDay) : mapForecast(f.getNight(), date, timeOfDay);
-        List<Place> places = isDay ? f.getDay().getPlaces() : f.getNight().getPlaces();
+        List<XmlPlace> places = isDay ? f.getDay().getPlaces() : f.getNight().getPlaces();
         if (places != null) {
             places.forEach(p -> {
                 String placeName = p.getName();
@@ -64,5 +65,9 @@ public class ForecastService {
 
     public Page<ForecastResponseRecord> searchForecast(ForecastSearchRequest forecastSearchRequest) {
         return forecastSearchRepository.search(forecastSearchRequest);
+    }
+
+    public List<Forecast> findAll() {
+        return forecastRepository.findAll();
     }
 }

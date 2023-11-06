@@ -2,14 +2,14 @@ package com.oneot.testassigment.mapper;
 
 import com.oneot.testassigment.domain.forecast.Forecast;
 import com.oneot.testassigment.domain.forecast.TimeOfDay;
-import com.oneot.testassigment.weather_api_client.dto.BaseForecast;
+import com.oneot.testassigment.weather_api_client.dto.XmlBaseForecast;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 
 public class ForecastMapper {
 
-    public static Forecast mapForecast(BaseForecast forecast, LocalDate date, TimeOfDay timeOfDay) {
+    public static Forecast mapForecast(XmlBaseForecast forecast, LocalDate date, TimeOfDay timeOfDay) {
         return new Forecast()
                 .setDate(date)
                 .setTimeOfDay(timeOfDay)
