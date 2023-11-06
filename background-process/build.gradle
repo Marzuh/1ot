@@ -42,7 +42,10 @@ dependencies {
             "io.swagger.core.v3:swagger-annotations:${swagger}",
     )
     runtimeOnly 'org.postgresql:postgresql'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation (
+            'org.springframework.boot:spring-boot-starter-test',
+            'org.testcontainers:postgresql:1.19.1',
+    )
     compileOnly(
             "org.projectlombok:lombok"
     )
