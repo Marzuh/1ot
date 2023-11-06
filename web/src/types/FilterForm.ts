@@ -4,6 +4,6 @@ export interface FilterForm {
     date?: string,
     place?: string,
     pageSize: number,
-    pageNumber: number
+    pageNumber: number,
 
 }

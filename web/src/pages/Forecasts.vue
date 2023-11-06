@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onMounted, reactive, Ref, ref} from "vue";
+import {onMounted, reactive, Ref, ref, watch} from "vue";
 import {findAllPlaces} from "../api/placeApi.ts";
 import {Place} from "../types/Place.ts";
 import Button from "../components/Button.vue";
@@ -7,6 +7,8 @@ import ForecastTable from "../components/forecast/ForecastTable.vue"
 import {Forecast, TimeOfDay} from "../types/Forecast.ts";
 import {searchForecasts} from "../api/forecastApi.ts";
 import {FilterForm} from "../types/FilterForm.ts";
+import Pagination from "../components/Pagination.vue";
+import {PaginationData} from "../types/PaginationData.ts";
 
 const places: Ref<Place[]> = ref([]);
 const forecasts: Ref<Forecast[]> = ref([]);
@@ -25,9 +27,17 @@ const filterForm = reactive<FilterForm>({
   timeOfDay: '24H',
   date: "",
   place: "",
-  pageSize: 20,
-  pageNumber: 1
+  pageSize: 3,
+  pageNumber: 1,
 })
+
+const paginationData: PaginationData = reactive<PaginationData>({
+  totalElements: 0,
+  pageNumber: 1,
+  numberOfElements: 0,
+  pageSize: 3,
+  totalPages: 0
+});
 function resetFiltersForm() {
   filterForm.date = "";
   filterForm.timeOfDay = '24H';
@@ -45,13 +55,25 @@ const searchForecast = async () => {
   }
   if (searchResponse.data){
     forecasts.value = searchResponse.data.content;
-    //TODO: handle pagination data
+    paginationData.pageSize = searchResponse.data.size;
+    paginationData.pageNumber = searchResponse.data.number + 1;
+    paginationData.numberOfElements = searchResponse.data.numberOfElements;
+    paginationData.totalPages = searchResponse.data.totalPages;
+    paginationData.totalElements = searchResponse.data.totalElements;
   }
 
 }
 
+watch(
+    () => paginationData.pageNumber,
+    async (newPageNumber: number, oldPageNumber: number) => {
+      filterForm.pageNumber = newPageNumber;
+      await searchForecast();
+    },
+);
+
 onMounted(() => {
-  // resetFiltersForm();
+  resetFiltersForm();
   fetchCities();
 })
 </script>
@@ -94,6 +116,14 @@ onMounted(() => {
 
     <div>
       <ForecastTable :forecasts="forecasts" :loaded="loaded"></ForecastTable>
+    </div>
+    <div>
+      <Pagination v-if="loaded"
+          v-model:page-number="paginationData.pageNumber"
+          :total-pages="paginationData.totalPages"
+          :total-elements="paginationData.totalElements"
+          :page-size="paginationData.pageSize"
+      />
     </div>
   </div>
 </template>

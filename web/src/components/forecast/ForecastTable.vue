@@ -48,11 +48,6 @@ const isForecasts = computed(() => {
           :key="forecast.id"
           :forecast="forecast"
       />
-      <tr v-if="loaded && !isForecasts">
-        <td colspan="7" class="text-center">
-          No forecasts for given date and/or place.
-        </td>
-      </tr>
       <tr v-if="!loaded">
         <td colspan="7" class="text-center">
           Please press Search button.

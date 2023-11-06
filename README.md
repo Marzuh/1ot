@@ -17,7 +17,7 @@ Database: weather
 Username: weather   
 Password: weather
 
-Port 7001 must be free.  
+Port 7001 must be free.
 
 For local development you can use up docker container from 'docker-compose.yml'
 
@@ -27,6 +27,10 @@ docker-compose up -d database
 
 You can run backend application with gradle task background-process.Tasks.application.bootRun or from main class
 java/com/oneot/testassigment/AssigmentApplication.java
+
+```bash
+./gradlew :background-process:bootRun
+```
 
 ## FE: Web
 
@@ -50,7 +54,8 @@ because IDE can not do it)
 Created SPA with vite + vue3. Setup vite proxy. Used vue-router for page navigation. Created example pages "About" and "
 Forecasts". Forecasts page contains filter block for choosing search parameters and table for showing results.  
 If you send request with empty parameters BE will return first 20 forecast from DB. 20 is page size, it can be changed
-on frontend.
+on frontend. Pagination is set for 3 items per page for demo purpose. For production, it could be changed back to 20
+items per page or added customer feature to choose size of the page.
 
 ### BE: Background
 
@@ -75,7 +80,10 @@ non-blocking requests WebClient will be better choice.
 ### Implementations that were not finished
 
 - Swagger. Rest controller classes and methods are annotated.
-- Pagination in Forecasts web page. All necessary data received from BE.
+- Think about data representation. Because for test assigment I show skill of using mapper for complicated request and
+  pagination. One way of improvement is change request so that only forecast objects are searched in DB and @click on
+  any of them send next request for all place forecast linked to given forecast. Other way is change UI. Right now if
+  forecast have any place, then places will count as item. If no then forecast itself will be counted as item.
 - Tests. Created test profile.
 
 ### Good to implement
