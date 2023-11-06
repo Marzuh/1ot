@@ -10,7 +10,8 @@ no @transactional due to use case
 
 
 ## Known issues and not finished tasks
-- If launch web through gradle then proccess will not stop properly
+- If launch web through gradle then process will not stop properly
+- Object type for pagination filtered search not updated
 
 
 ## Implementation that is not finished

@@ -3,6 +3,7 @@ package com.oneot.testassigment.domain.forecast;
 import com.oneot.testassigment.domain.place.PlaceService;
 import com.oneot.testassigment.domain.place_forecast.PlaceForecast;
 import com.oneot.testassigment.weather_api_client.dto.Forecasts;
+import com.oneot.testassigment.weather_api_client.dto.Place;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import static com.oneot.testassigment.mapper.ForecastMapper.mapForecast;
 
@@ -41,9 +43,11 @@ public class ForecastService {
     }
 
     private void createAndSaveForecast(com.oneot.testassigment.weather_api_client.dto.Forecast f, LocalDate date, TimeOfDay timeOfDay) {
-        Forecast forecast = mapForecast(f.getDay(), date, timeOfDay);
-        if (f.getDay().getPlaces() != null) {
-            f.getDay().getPlaces().forEach(p -> {
+        boolean isDay = timeOfDay.equals(TimeOfDay.DAY);
+        Forecast forecast = isDay ? mapForecast(f.getDay(), date, timeOfDay) : mapForecast(f.getNight(), date, timeOfDay);
+        List<Place> places = isDay ? f.getDay().getPlaces() : f.getNight().getPlaces();
+        if (places != null) {
+            places.forEach(p -> {
                 String placeName = p.getName();
                 int placeId = placeService.getPlaceIdByNameAndSaveIfNotExist(placeName);
                 PlaceForecast placeForecast = new PlaceForecast()
