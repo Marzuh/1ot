@@ -67,16 +67,18 @@ location names and another endpoint for filtered pagination search. Was added cu
 table connections.
 
 **_Why RestTemplate was chosen_**
-
 I have chosen restTemplate because request to weather API can be done in synchronous way. For asynchronous and thread
 non-blocking requests WebClient will be better choice.
+
+**_Feature development_**  
+Features were developed in own git branches. Because I developed personally, then the main branch is strait.
 
 ## In progress
 
 ### Known issues and not finished tasks
 
 - If launch web application through gradle then process will not stop properly, you must be able to do this manually.
-- Object type for pagination filtered search response is not updated for pagination response.
+
 
 ### Implementations that were not finished
 
@@ -85,7 +87,6 @@ non-blocking requests WebClient will be better choice.
   pagination. One way of improvement is change request so that only forecast objects are searched in DB and @click on
   any of them send next request for all place forecast linked to given forecast. Other way is change UI. Right now if
   forecast have any place, then places will count as item. If no then forecast itself will be counted as item.
-- Tests. Created test profile.
 
 ## Good to implement
 
