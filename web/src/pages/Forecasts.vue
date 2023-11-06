@@ -10,6 +10,7 @@ import {FilterForm} from "../types/FilterForm.ts";
 
 const places: Ref<Place[]> = ref([]);
 const forecasts: Ref<Forecast[]> = ref([]);
+const loaded: Ref<boolean> =  ref(false);
 const fetchCities = async () => {
   const citiesResponse = await findAllPlaces()
   if (citiesResponse.error) {
@@ -35,6 +36,9 @@ function resetFiltersForm() {
 }
 
 const searchForecast = async () => {
+  if (!loaded.value) {
+    loaded.value = true;
+  }
   const searchResponse = await searchForecasts(filterForm);
   if (searchResponse.error) {
     console.error("failed to fetch forecast search:", searchResponse.error);
@@ -89,7 +93,7 @@ onMounted(() => {
     </div>
 
     <div>
-      <ForecastTable :forecasts="forecasts" ></ForecastTable>
+      <ForecastTable :forecasts="forecasts" :loaded="loaded"></ForecastTable>
     </div>
   </div>
 </template>
