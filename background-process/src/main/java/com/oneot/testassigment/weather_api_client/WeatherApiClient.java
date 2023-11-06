@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @Service
+@EnableRetry
 @AllArgsConstructor
 @EnableConfigurationProperties({ WeatherApiProperties.class })
 public class WeatherApiClient {
@@ -25,7 +27,7 @@ public class WeatherApiClient {
     @Retryable(retryFor = {HttpClientErrorException.class},
             maxAttempts = 5,
             backoff = @Backoff(delay = 1000))
-    public Forecasts fetchAndUpdateForecasts() throws HttpClientErrorException {
+    public Forecasts fetchForecasts() throws HttpClientErrorException {
         log.debug("Start fetching new forecasts");
         ResponseEntity<Forecasts> response = restTemplate.getForEntity(weatherApiProperties.getApiUri(), Forecasts.class);
         log.debug("Weather API response = {}", response);
@@ -34,7 +36,7 @@ public class WeatherApiClient {
 
     @Recover
     public void recover(HttpClientErrorException e) {
-        log.warn("New forecast did not fetched with exception: ", e);
+        log.warn("New forecast did not fetched after 5 tries. Exception: ", e);
     }
 
 }

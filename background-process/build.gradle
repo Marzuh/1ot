@@ -45,6 +45,7 @@ dependencies {
     testImplementation (
             'org.springframework.boot:spring-boot-starter-test',
             'org.testcontainers:postgresql:1.19.1',
+            "org.testcontainers:junit-jupiter",
     )
     compileOnly(
             "org.projectlombok:lombok"

@@ -25,7 +25,7 @@ public class ForecastJobExecutor {
     @SchedulerLock(name = "fetchApiForecast")
     public void fetchForecasts() {
         log.info("Scheduled job with name = \"fetchApiForecast\" started.");
-        Forecasts forecasts = weatherApiClient.fetchAndUpdateForecasts();
+        Forecasts forecasts = weatherApiClient.fetchForecasts();
         forecastService.saveFetchedForecasts(forecasts);
     }
 }

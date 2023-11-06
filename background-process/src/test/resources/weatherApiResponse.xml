@@ -1,0 +1,177 @@
+<forecasts>
+    <forecast date="2023-11-07">
+        <night>
+            <phenomenon>Moderate rain</phenomenon>
+            <tempmin>4</tempmin>
+            <tempmax>9</tempmax>
+            <text>Cloudy with some clear spells. Rain and fog in many places. Mainly westerly wind 3-9, on coast in gusts up to 12 m/s. Air temperature 4..9°C.</text>
+            <place>
+                <name>Harku</name>
+                <phenomenon>Light rain</phenomenon>
+                <tempmin>7</tempmin>
+            </place>
+            <place>
+                <name>Jõhvi</name>
+                <phenomenon>Moderate rain</phenomenon>
+                <tempmin>6</tempmin>
+            </place>
+            <place>
+                <name>Tartu</name>
+                <phenomenon>Light rain</phenomenon>
+                <tempmin>7</tempmin>
+            </place>
+            <place>
+                <name>Pärnu</name>
+                <phenomenon>Moderate shower</phenomenon>
+                <tempmin>7</tempmin>
+            </place>
+            <place>
+                <name>Kuressaare</name>
+                <phenomenon>Moderate shower</phenomenon>
+                <tempmin>8</tempmin>
+            </place>
+            <place>
+                <name>Türi</name>
+                <phenomenon>Fog</phenomenon>
+                <tempmin>6</tempmin>
+            </place>
+            <wind>
+                <name>Kuusiku</name>
+                <direction>Southwest wind</direction>
+                <speedmin>3</speedmin>
+                <speedmax>6</speedmax>
+                <gust></gust>
+            </wind>
+            <wind>
+                <name>Väike-Maarja</name>
+                <direction>West wind</direction>
+                <speedmin>3</speedmin>
+                <speedmax>9</speedmax>
+                <gust></gust>
+            </wind>
+            <wind>
+                <name>Võrtsjärv</name>
+                <direction>West wind</direction>
+                <speedmin>3</speedmin>
+                <speedmax>8</speedmax>
+                <gust></gust>
+            </wind>
+            <sea>Forecast for Baltic Sea valid 24 hours from 13:00 UTC Nov 6 to 13:00 UTC Nov 7, 2023.
+
+                Weather summary: weak area of Low is over Baltic Sea.
+
+                No warnings
+
+                Northern Baltic: mainly southerly, in the evening variable 2-7 m/s, at night in northern waters mainly northerly, in southern waters southwest, west 3-9, in southern waters in gusts up to 12 m/s. Rain in many places. Visibility from moderate to good.
+
+                Western Gulf of Finland: variable, in evening becoming westerly 2-7 m/s, at night westerly 3-9 m/s, tomorrow evening in gusts up to 12 m/s. Rain in many places. Visibility moderate to good.
+
+                Eastern Gulf of Finland: southeast, east 4-10, in gusts up to 13 m/s, in evening decreasing and before midnight variable 2-7 m/s, after midnight westerly 3-8, in gusts up to 11 m/s. Today in many places, at night and tomorrow by day locally rain. Visibility from moderate to good.
+
+                Northern Gulf of Riga, Moonsund: variable 2-6 m/s, in the evening veering to southwest, west, at night westerly, tomorrow by day mainly southwest 3-9, in gusts to 12 m/s. Rain in many places, in the evening and at night locally fog possible. Visibility from moderate to poor. </sea>
+            <peipsi>Southwest, west wind 3-8 m/s. Wave height up to 0.6 m. At times rain, possible fog. Visibility moderate or poor. Air temperature 4..7°C.</peipsi>
+        </night>
+        <day>
+            <phenomenon>Moderate shower</phenomenon>
+            <tempmin>6</tempmin>
+            <tempmax>10</tempmax>
+            <text>Cloudy with some clear spells. Rain in many places. In the forenoon locally fog. Southwest, west wind 3-9, in gusts up to 12 m/s. Air temperature 6..10°C.</text>
+            <place>
+                <name>Harku</name>
+                <phenomenon>Moderate rain</phenomenon>
+                <tempmax>8</tempmax>
+            </place>
+            <place>
+                <name>Jõhvi</name>
+                <phenomenon>Moderate rain</phenomenon>
+                <tempmax>8</tempmax>
+            </place>
+            <place>
+                <name>Tartu</name>
+                <phenomenon>Moderate rain</phenomenon>
+                <tempmax>9</tempmax>
+            </place>
+            <place>
+                <name>Pärnu</name>
+                <phenomenon>Moderate shower</phenomenon>
+                <tempmax>9</tempmax>
+            </place>
+            <place>
+                <name>Kuressaare</name>
+                <phenomenon>Moderate shower</phenomenon>
+                <tempmax>10</tempmax>
+            </place>
+            <place>
+                <name>Türi</name>
+                <phenomenon>Light rain</phenomenon>
+                <tempmax>8</tempmax>
+            </place>
+            <wind>
+                <name>Kuusiku</name>
+                <direction>Southwest wind</direction>
+                <speedmin>3</speedmin>
+                <speedmax>7</speedmax>
+                <gust>10</gust>
+            </wind>
+            <wind>
+                <name>Väike-Maarja</name>
+                <direction>Southwest wind</direction>
+                <speedmin>4</speedmin>
+                <speedmax>7</speedmax>
+                <gust>10</gust>
+            </wind>
+            <wind>
+                <name>Võrtsjärv</name>
+                <direction>Southwest wind</direction>
+                <speedmin>4</speedmin>
+                <speedmax>8</speedmax>
+                <gust>11</gust>
+            </wind>
+            <sea></sea>
+            <peipsi>Mainly southwest wind 3-8 m/s. Wave height up to 0.6 m. At times rain. Visibility moderate. Air temperature 5..7°C.</peipsi>
+        </day>
+    </forecast>
+    <forecast date="2023-11-08">
+        <night>
+            <phenomenon>Light rain</phenomenon>
+            <tempmin>3</tempmin>
+            <tempmax>8</tempmax>
+            <text>Cloudy with some clear spells. Rain at times. Locally fog. Southwest, west wind 2-8 m/s. Air temperature 3..8°C.</text>
+        </night>
+        <day>
+            <phenomenon>Light shower</phenomenon>
+            <tempmin>6</tempmin>
+            <tempmax>9</tempmax>
+            <text>Cloudy with clear spells. Rain in many places, more tensiv in southern part and in islands. Southwest, west wind 3-9, around Gulf of Riga in gusts to 12 m/s, by evening decreasing.
+                Air temperature 6..9°C.</text>
+        </day>
+    </forecast>
+    <forecast date="2023-11-09">
+        <night>
+            <phenomenon>Moderate shower</phenomenon>
+            <tempmin>1</tempmin>
+            <tempmax>7</tempmax>
+            <text>Cloudy with clear spells. Rain in many places. Mainly southerly wind 2-8 m/s. Air temperature 1..7°C.</text>
+        </night>
+        <day>
+            <phenomenon>Moderate rain</phenomenon>
+            <tempmin>5</tempmin>
+            <tempmax>9</tempmax>
+            <text>Overcast. At times rain. Southwest, south 3-9, in the afternoon increasing around  Gulf of Riga in gusts up to 14 m/s. Air temperature 5..9°C.</text>
+        </day>
+    </forecast>
+    <forecast date="2023-11-10">
+        <night>
+            <phenomenon>Light rain</phenomenon>
+            <tempmin>1</tempmin>
+            <tempmax>7</tempmax>
+            <text>Cloudy. Rain in many places, by morning possibility for rain is decreasing. Wind around south 2-8 m/s. Air temperature 1..7°C.</text>
+        </night>
+        <day>
+            <phenomenon>Moderate rain</phenomenon>
+            <tempmin>5</tempmin>
+            <tempmax>8</tempmax>
+            <text>Cloudy. At times rain. South, southeast wind 3-9 m/s. Air temperature 5..8°C.</text>
+        </day>
+    </forecast>
+</forecasts>
