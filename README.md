@@ -3,7 +3,7 @@
 Weather forecast application that consist from two independent modules. Web - for frontend and Background for backend.  
 Used technologies: Springboot3, Java17, node20, vue3, postgres16, luquibase.
 
-# Run
+# How to run the project
 
 ## BE: Background
 
@@ -44,10 +44,11 @@ yarn vite
 
 Also you can run FE with gradle task web.Tasks.node.viteRun (Warning! You must be able to stop/kill process manually,
 because IDE can not do it)
+```bash
+./gradlew :web:viteRun
+```
 
-# Did, do, todo
-
-## Ready
+## Done features
 
 ### FE: Web
 
@@ -86,7 +87,7 @@ non-blocking requests WebClient will be better choice.
   forecast have any place, then places will count as item. If no then forecast itself will be counted as item.
 - Tests. Created test profile.
 
-### Good to implement
+## Good to implement
 
 - Pinia. Good to add for storing filters values when we are moving in out SPA.
 - Multiselect with text input with autocomplete for place search options 
