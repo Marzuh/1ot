@@ -32,7 +32,6 @@ public class ForecastService {
     public void saveFetchedForecasts(XmlForecasts forecasts) {
         forecasts.getForecastList().forEach(f -> {
             LocalDate date = LocalDate.parse(f.getDate(), formatter);
-            // TODO: update if exist and changed
             if (forecastRepository.findByDateAndTimeOfDay(date, TimeOfDay.DAY).isEmpty()) {
                 createAndSaveForecast(f, date, TimeOfDay.DAY);
             }
