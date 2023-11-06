@@ -8,7 +8,7 @@ export interface Forecast {
     phenomenon: string;
     tempMin: number;
     tempMax: number;
-    places: PlaceForecast[];
+    placeForecasts: PlaceForecast[];
     textDescription: string;
     peipsi: string;
 

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {onMounted, reactive, Ref, ref} from "vue";
 import {findAllPlaces} from "../api/placeApi.ts";
-import { format } from 'date-fns'
 import {Place} from "../types/Place.ts";
 import Button from "../components/Button.vue";
+import ForecastTable from "../components/forecast/ForecastTable.vue"
 import {Forecast, TimeOfDay} from "../types/Forecast.ts";
 import {searchForecasts} from "../api/forecastApi.ts";
 import {FilterForm} from "../types/FilterForm.ts";
@@ -28,7 +28,6 @@ const filterForm = reactive<FilterForm>({
   pageNumber: 1
 })
 function resetFiltersForm() {
-  // filterForm.value.date = format(Date.now(), 'yyyy-MM-dd');
   filterForm.date = "";
   filterForm.timeOfDay = '24H';
   filterForm.place = "";
@@ -36,14 +35,13 @@ function resetFiltersForm() {
 }
 
 const searchForecast = async () => {
-  console.log('search for forecast', filterForm);
   const searchResponse = await searchForecasts(filterForm);
   if (searchResponse.error) {
     console.error("failed to fetch forecast search:", searchResponse.error);
   }
   if (searchResponse.data){
-    forecasts.value = searchResponse.data;
-    //TODO: check pagination
+    forecasts.value = searchResponse.data.content;
+    //TODO: handle pagination data
   }
 
 }
@@ -90,13 +88,8 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="border rounded p-4">
-      <h2 class="font-bold text-lg mb-2">List of Forecast</h2>
-      <!-- Forecast data -->
+    <div>
+      <ForecastTable :forecasts="forecasts" ></ForecastTable>
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>

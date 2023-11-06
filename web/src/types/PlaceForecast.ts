@@ -1,8 +1,7 @@
 export interface PlaceForecast{
-    id: number;
-    placeId: number;
-    forecastId: number;
-    phenomenon: string;
-    tempMin: number;
-    tempMax: number;
+    pfId: number;
+    pfPlaceName: string;
+    pfPhenomenon: string;
+    pfTempMin: number;
+    pfTempMax: number;
 }
