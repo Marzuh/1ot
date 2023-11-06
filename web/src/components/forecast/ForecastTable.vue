@@ -19,6 +19,7 @@ const isForecasts = computed(() => {
     <table class="min-w-full divide-y divide-green-300">
       <thead class="bg-green-200">
       <tr>
+        <th scope="col"></th>
         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-green-800 uppercase tracking-wider">
           Date
         </th>
@@ -49,7 +50,7 @@ const isForecasts = computed(() => {
           :forecast="forecast"
       />
       <tr v-if="!loaded">
-        <td colspan="7" class="text-center">
+        <td colspan="8" class="text-center">
           Please press Search button.
         </td>
       </tr>

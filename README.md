@@ -48,6 +48,9 @@ because IDE can not do it)
 ./gradlew :web:viteRun
 ```
 
+**_Tested_**
+Project was developed and tested (mostly manual for FE) on Ubuntu 22.04 64bit, Chrome, Mozilla Firefox 119.0 (64-bit) 
+
 ## Done features
 
 ### FE: Web
@@ -78,7 +81,7 @@ Features were developed in own git branches. Because I developed personally, the
 ### Known issues and not finished tasks
 
 - If launch web application through gradle then process will not stop properly, you must be able to do this manually.
-
+- Web UI needs improvement with responsive design.
 
 ### Implementations that were not finished
 

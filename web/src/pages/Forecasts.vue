@@ -45,6 +45,11 @@ function resetFiltersForm() {
   filterForm.pageNumber = 1
 }
 
+function reset() {
+  forecasts.value = [];
+  resetFiltersForm();
+}
+
 const searchForecast = async () => {
   if (!loaded.value) {
     loaded.value = true;
@@ -109,7 +114,7 @@ onMounted(() => {
         </select>
       </div>
       <div class="flex gap-4 item-center p-4">
-        <Button label="Reset" @click="resetFiltersForm"></Button>
+        <Button label="Reset" @click="reset"></Button>
         <Button label="Search" @click="searchForecast"></Button>
       </div>
     </div>
@@ -118,7 +123,7 @@ onMounted(() => {
       <ForecastTable :forecasts="forecasts" :loaded="loaded"></ForecastTable>
     </div>
     <div>
-      <Pagination v-if="loaded"
+      <Pagination v-if="forecasts.length > 0"
           v-model:page-number="paginationData.pageNumber"
           :total-pages="paginationData.totalPages"
           :total-elements="paginationData.totalElements"
